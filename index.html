@@ -2,9 +2,9 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Xtreme Crash Predictor</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     html, body {
       margin: 0;
@@ -15,6 +15,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+      touch-action: none;
     }
 
     .loader-container {
@@ -29,7 +31,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 3em;
-      color: #FFC107; /* Yellow icon color */
+      color: #FFC107;
       z-index: 2;
     }
 
@@ -50,7 +52,7 @@
     }
 
     .progress-bar {
-      stroke: #FFA726; /* Orange ring color */
+      stroke: #FFA726;
       stroke-dasharray: 439.6;
       stroke-dashoffset: 439.6;
       animation: loadRing 4s linear forwards;
@@ -74,6 +76,18 @@
   </div>
 
   <script>
+    // Disable zooming and other unwanted gestures
+    document.addEventListener('gesturestart', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('touchmove', function(e) {
+      if (e.scale !== 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Redirect after 4 seconds
     setTimeout(() => {
       window.location.href = "https://damindu817.github.io/xtreme_predictor_signal_notice/";
     }, 4000);
